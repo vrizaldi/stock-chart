@@ -4,8 +4,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./src/server.js",
-    "uglifycss": "uglifycss --ugly-comments ./src/css/index.css > ./src/public/index.min.css"
+    "start": "node ./dist/server.js",
+    "build": "babel ./src -d ./dist",
+    "uglifycss": "uglifycss --ugly-comments ./src/css/index.css > ./dist/public/index.min.css"
   },
   "dependencies": {
     "axios": "*",
@@ -30,12 +31,14 @@
     "redux": "*",
     "redux-logger": "*",
     "redux-promise-middleware": "*",
-    "redux-thunk": "*",
+    "redux-thunk": "^2.2.0",
+    "socket.io": "^2.0.3",
     "webpack": "*"
   },
   "author": "vrizaldi",
   "license": "ISC",
   "devDependencies": {
+    "babel-cli": "^6.24.1",
     "eslint": "^4.1.1",
     "eslint-plugin-react": "^7.1.0"
   },
