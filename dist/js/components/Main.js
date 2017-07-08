@@ -15,11 +15,15 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = require("react-redux");
 
-var _Actions = require("../actions/Actions");
+var _ChartActions = require("../actions/ChartActions");
 
-var Actions = _interopRequireWildcard(_Actions);
+var _Home = require("../pages/Home");
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+var _Home2 = _interopRequireDefault(_Home);
+
+var _Login = require("../pages/Login");
+
+var _Login2 = _interopRequireDefault(_Login);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31,7 +35,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var Main = (_dec = (0, _reactRedux.connect)(function (store) {
 	return {
-		text: store.text.text
+		status: store.chart.status,
+		charts: store.chart.charts
 	};
 }), _dec(_class = function (_React$Component) {
 	_inherits(Main, _React$Component);
@@ -43,21 +48,44 @@ var Main = (_dec = (0, _reactRedux.connect)(function (store) {
 	}
 
 	_createClass(Main, [{
+		key: "componentDidMount",
+		value: function componentDidMount() {
+			this.props.dispatch((0, _ChartActions.connectToServer)());
+		}
+	}, {
+		key: "addCompany",
+		value: function addCompany(code) {
+			this.props.dispatch((0, _ChartActions.addCompany)(code));
+		}
+	}, {
+		key: "removeCompany",
+		value: function removeCompany(code) {
+			this.props.dispatch((0, _ChartActions.removeCompany)(code));
+		}
+	}, {
 		key: "render",
 		value: function render() {
+			console.log("charts:", this.props.charts);
+			var page = "";
+			switch (this.props.status) {
+				case "connecting":
+					page = _react2.default.createElement(_Login2.default, null);
+					break;
+				case "connected":
+					page = _react2.default.createElement(_Home2.default, { addCompany: this.addCompany.bind(this),
+						removeCompany: this.removeCompany.bind(this),
+						charts: this.props.charts });
+					break;
+			}
 			return _react2.default.createElement(
 				"div",
 				null,
 				_react2.default.createElement(
-					"p",
+					"h1",
 					null,
-					this.props.text
+					"Stock Market Chart"
 				),
-				_react2.default.createElement(
-					"button",
-					{ onClick: this.changeText.bind(this) },
-					"Click!"
-				)
+				page
 			);
 		}
 	}, {

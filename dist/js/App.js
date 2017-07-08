@@ -11,10 +11,6 @@ var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Header = require("./components/Header");
-
-var _Header2 = _interopRequireDefault(_Header);
-
 var _Main = require("./components/Main");
 
 var _Main2 = _interopRequireDefault(_Main);
@@ -42,7 +38,6 @@ var App = function (_React$Component) {
 			return _react2.default.createElement(
 				"div",
 				null,
-				_react2.default.createElement(_Header2.default, null),
 				_react2.default.createElement(_Main2.default, null)
 			);
 		}

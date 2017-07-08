@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 
-import text from "./reducer";
+import chart from "./chartReducer";
 
 export default combineReducers({
-	text
+	chart
 });

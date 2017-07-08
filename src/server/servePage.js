@@ -35,12 +35,13 @@ export default function servePage(req, res) {
 			<meta name="author" content="vrizaldi">
 
 			<link href="/bootstrap.min.css" rel="stylesheet">
-			<link href="/freelancer.min.css" rel="stylesheet">
 			<link href="/index.min.css" rel="stylesheet">
 		</head>
 
 		<body>
 			<div id="app">${html}</div>
+			
+			<script src="/socket.io/socket.io.js"></script>
 			<script src="/client.min.js"></script>
 			<p id="credit">Verdy Noorghifari 2017 © All right reversed.</p>
 		</body>

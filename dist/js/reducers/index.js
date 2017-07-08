@@ -6,12 +6,12 @@ Object.defineProperty(exports, "__esModule", {
 
 var _redux = require("redux");
 
-var _reducer = require("./reducer");
+var _chartReducer = require("./chartReducer");
 
-var _reducer2 = _interopRequireDefault(_reducer);
+var _chartReducer2 = _interopRequireDefault(_chartReducer);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = (0, _redux.combineReducers)({
-	text: _reducer2.default
+	chart: _chartReducer2.default
 });
