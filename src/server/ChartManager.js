@@ -16,6 +16,11 @@ class ChartManager {
 		// default
 		this.addChart("GOOGL");
 //		this.addChart("YHOO");
+		
+		// reset everyday
+		setTimeout(() => {
+			this.init(this.io);
+		}, 86400000);
 	}
 
 	getCharts() {
